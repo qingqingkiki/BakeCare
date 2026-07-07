@@ -1,0 +1,25 @@
+# Godot editor cache
+.godot/
+.import/
+
+# Imported translations
+*.translation
+
+# Exported builds
+Builds/
+export/
+dist/
+*.pck
+*.exe
+*.dmg
+*.app
+*.zip
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+
+# Logs
+*.log

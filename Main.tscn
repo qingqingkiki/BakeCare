@@ -1,0 +1,401 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://textbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Art/recipeBook.png" type="Texture2D" id=3]
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=4]
+[ext_resource path="res://Art/recipePage.png" type="Texture2D" id=5]
+[ext_resource path="res://Art/bowl.png" type="Texture2D" id=6]
+[ext_resource path="res://Art/butterbowl.png" type="Texture2D" id=7]
+[ext_resource path="res://Art/chips.png" type="Texture2D" id=8]
+[ext_resource path="res://Art/brownSugar.png" type="Texture2D" id=9]
+[ext_resource path="res://Art/cup-big.png" type="Texture2D" id=10]
+[ext_resource path="res://Art/eggBowl.png" type="Texture2D" id=11]
+[ext_resource path="res://Art/flour.png" type="Texture2D" id=12]
+[ext_resource path="res://Art/sugar.png" type="Texture2D" id=13]
+[ext_resource path="res://Art/bakingSoda.png" type="Texture2D" id=14]
+[ext_resource path="res://Art/vanilla.png" type="Texture2D" id=15]
+[ext_resource path="res://Scripts/RecipePage.gd" type="Script" id=16]
+[ext_resource path="res://Fonts/NotoSansCJK/NotoSansCJKsc-Regular.otf" type="FontFile" id=18]
+[ext_resource path="res://Scripts/clickable.gd" type="Script" id=19]
+[ext_resource path="res://Art/close.png" type="Texture2D" id=20]
+[ext_resource path="res://Scripts/Ingredient.gd" type="Script" id=21]
+[ext_resource path="res://Art/trashClosed.png" type="Texture2D" id=22]
+[ext_resource path="res://Scripts/Trash.gd" type="Script" id=23]
+[ext_resource path="res://Sounds/SFX/trash.wav" type="AudioStream" id=24]
+[ext_resource path="res://Sounds/SFX/page.wav" type="AudioStream" id=25]
+[ext_resource path="res://Sounds/SFX/pageDown.wav" type="AudioStream" id=26]
+[ext_resource path="res://Scripts/Bowl.gd" type="Script" id=27]
+[ext_resource path="res://Sounds/SFX/squish.wav" type="AudioStream" id=28]
+[ext_resource path="res://Fonts/NotoSansCJK/NotoSansCJKsc-Regular.otf" type="FontFile" id=29]
+[ext_resource path="res://Art/bakeArrow.png" type="Texture2D" id=30]
+[ext_resource path="res://ReadyToBake.gd" type="Script" id=31]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PackedVector2Array( -485.312, -169.846, -2.067, -208.992, 491.977, 159.516, -95.206, 218.909 )
+
+[sub_resource type="FontFile" id=3]
+size = 64
+outline_color = Color( 0.580392, 0.443137, 0.341176, 1 )
+use_filter = true
+font_data = ExtResource( 29 )
+
+[sub_resource type="FontFile" id=2]
+size = 118
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 18 )
+
+[sub_resource type="FontFile" id=4]
+size = 82
+outline_color = Color( 0.501961, 0.482353, 0.482353, 1 )
+font_data = ExtResource( 18 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+
+[node name="Ingredients" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -548.5
+offset_top = -325.0
+offset_right = 548.5
+offset_bottom = 375.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Chips" type="Area2D" parent="Ingredients"]
+position = Vector2( 295.667, 271.815 )
+scale = Vector2( 0.333, 0.333 )
+script = ExtResource( 21 )
+contains = 4
+required_tool = 8
+
+[node name="chips" type="Sprite2D" parent="Ingredients/Chips"]
+texture = ExtResource( 8 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ingredients/Chips"]
+polygon = PackedVector2Array( -229.861, -103.093, -220.782, -165.924, -104.719, -201.636, 127.409, -206.993, 203.297, -21.291, 254.186, 96.5583, 225.191, 201.961, 134.181, 121.062, 4.40649, 169.938, 1.03577, 260.949, -137.165, 272.746, -148.963, 237.353, -160.761, -8.71179, -182.67, -99.7222 )
+
+[node name="Sugar" type="Area2D" parent="Ingredients"]
+position = Vector2( 969.5, 297 )
+scale = Vector2( 0.8, 0.8 )
+script = ExtResource( 21 )
+contains = 2
+required_tool = 8
+
+[node name="sugar" type="Sprite2D" parent="Ingredients/Sugar"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 13 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ingredients/Sugar"]
+polygon = PackedVector2Array( -70.8698, -70.5057, -88.6621, 4.87784, -88.194, 54.5093, -77.3616, 66.6051, 25.1227, 65.0284, 79.781, 90.7809, 93.0076, -30.7069, 82.7067, -92.9803, 60.2322, -107.495, -67.124, -107.495 )
+
+[node name="Flour" type="Area2D" parent="Ingredients"]
+position = Vector2( 812.5, 272 )
+scale = Vector2( 0.333, 0.333 )
+script = ExtResource( 21 )
+contains = 1
+required_tool = 8
+
+[node name="flour" type="Sprite2D" parent="Ingredients/Flour"]
+texture = ExtResource( 12 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ingredients/Flour"]
+polygon = PackedVector2Array( -117.131, 302.637, -256.73, 251.164, -290.476, 200.546, -213.986, -121.163, -273.603, -210.027, -217.361, -309.014, 100.973, -312.388, 246.08, -287.642, 265.202, -169.532, 239.331, -60.4208, 266.327, 236.541, 265.202, 263.537, 52.6047, 316.406 )
+
+[node name="Bowl" type="Area2D" parent="Ingredients"]
+position = Vector2( 551.643, 200.68 )
+scale = Vector2( 0.333, 0.333 )
+script = ExtResource( 27 )
+
+[node name="bowl" type="Sprite2D" parent="Ingredients/Bowl"]
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ingredients/Bowl"]
+polygon = PackedVector2Array( -474.596, -178.287, -459.882, 85.2366, -351.529, 279.201, -203.046, 382.203, -86.6676, 425.009, 81.8809, 441.061, 277.183, 378.19, 402.926, 259.136, 489.875, 55.8076, 493.888, -170.261, 182.207, -257.211, -204.384, -259.886, -338.152, -223.769 )
+
+[node name="sound" type="AudioStreamPlayer" parent="Ingredients/Bowl"]
+stream = ExtResource( 28 )
+
+[node name="BrownSugar" type="Area2D" parent="Ingredients"]
+position = Vector2( 944.946, 393.628 )
+scale = Vector2( 0.8, 0.8 )
+script = ExtResource( 21 )
+contains = 3
+required_tool = 8
+
+[node name="brownSugar" type="Sprite2D" parent="Ingredients/BrownSugar"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 9 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ingredients/BrownSugar"]
+polygon = PackedVector2Array( -188.538, -8.60004, -97.6902, 61.0107, -69.374, 48.0324, 61.5886, 55.7014, 154.206, 55.7014, 176.033, 35.644, 157.156, -6.24036, 51.5601, -56.3837, -52.2662, -54.024 )
+
+[node name="Egg" type="Area2D" parent="Ingredients"]
+position = Vector2( 553.5, 460 )
+scale = Vector2( 0.3, 0.3 )
+script = ExtResource( 21 )
+contains = 0
+
+[node name="eggBowl" type="Sprite2D" parent="Ingredients/Egg"]
+texture = ExtResource( 11 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ingredients/Egg"]
+polygon = PackedVector2Array( -350, -123.333, -346.667, 30, -283.334, 160, -205, 220, -176.667, 268.333, -85.0004, 303.333, 28.3329, 313.333, 175, 290, 176.666, 255, 338.333, 136.667, 370, -10, 346.666, -145, 328.333, -266.667, 218.333, -288.333, 131.666, -270, 46.6663, -253.333, -71.6671, -275, -253.334, -313.333, -318.334, -258.333 )
+
+[node name="Butter" type="Area2D" parent="Ingredients"]
+position = Vector2( 371.891, 385.304 )
+scale = Vector2( 0.333, 0.333 )
+script = ExtResource( 21 )
+contains = 7
+
+[node name="butterbowl" type="Sprite2D" parent="Ingredients/Butter"]
+texture = ExtResource( 7 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ingredients/Butter"]
+polygon = PackedVector2Array( -197.87, -45.9567, -239.912, -14.4252, -227.9, 44.1334, -160.332, 150.74, -95.7676, 204.794, 4.83301, 216.806, 108.437, 204.794, 183.512, 164.254, 213.542, 93.683, 245.073, -8.41919, 216.545, -101.512, 117.446, -146.557, 18.3466, -83.4943, -94.2661, -208.119, -220.392, -154.065, -209.882, -109.02 )
+
+[node name="Vanilla" type="Area2D" parent="Ingredients"]
+position = Vector2( 204.143, 313.822 )
+scale = Vector2( 0.8, 0.8 )
+script = ExtResource( 21 )
+contains = 6
+
+[node name="vanilla" type="Sprite2D" parent="Ingredients/Vanilla"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 15 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ingredients/Vanilla"]
+polygon = PackedVector2Array( -40.1016, 56.9498, -37.4529, -31.1181, -36.7417, -46.3394, -31.4292, -61.0269, -24.8667, -73.2144, -21.1167, -84.4644, 29.5083, -87.5894, 38.2583, -67.2769, 37.6333, -55.4019, 42.6689, -34.4289, 39.3582, 73.5039, 25.4527, 86.085, -7.65552, 90.058, -34.1421, 76.8147 )
+
+[node name="RecipeBook" type="Area2D" parent="Ingredients"]
+position = Vector2( 208.909, 471.25 )
+scale = Vector2( 0.33, 0.33 )
+script = ExtResource( 19 )
+
+[node name="recipeBook" type="Sprite2D" parent="Ingredients/RecipeBook"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ingredients/RecipeBook"]
+position = Vector2( -1.13501, -0.00012207 )
+shape = SubResource( 1 )
+
+[node name="Soda" type="Area2D" parent="Ingredients"]
+position = Vector2( 767.173, 393.674 )
+scale = Vector2( 0.333, 0.333 )
+script = ExtResource( 21 )
+contains = 5
+
+[node name="bakingSoda" type="Sprite2D" parent="Ingredients/Soda"]
+texture = ExtResource( 14 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ingredients/Soda"]
+polygon = PackedVector2Array( -273.794, -162.683, -266.286, 151.13, -119.139, 269.749, 268.248, 236.716, 284.765, -27.5481, 287.768, -162.683, 170.65, -197.218, -51.5718, -185.206, -111.632, -218.239, -204.725, -264.785, -308.328, -272.293, -311.331, -195.716 )
+
+[node name="Cup" type="Area2D" parent="Ingredients"]
+position = Vector2( 944.662, 468.25 )
+scale = Vector2( 0.333, 0.333 )
+script = ExtResource( 21 )
+contains = 8
+cup = true
+
+[node name="cup" type="Sprite2D" parent="Ingredients/Cup"]
+texture = ExtResource( 10 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ingredients/Cup"]
+polygon = PackedVector2Array( -215.895, -56.1761, -219.47, 16.5201, -215.895, 65.3816, -139.624, 86.8329, -25.2163, 97.5585, 84.4241, 78.4906, 84.4241, -10.8899, 234.583, -4.93127, 239.35, -46.6422, 223.858, -80.0111, -126.515, -75.2441 )
+
+[node name="ReadyToBake" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -354.0
+offset_top = 42.0
+offset_right = -47.0
+offset_bottom = 195.0
+texture = ExtResource( 30 )
+expand = true
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ReadyToBake"]
+anchor_left = 0.173
+anchor_top = 0.303
+anchor_right = 0.727
+anchor_bottom = 0.69
+offset_left = -26.0
+offset_top = -16.0
+offset_right = 34.0
+offset_bottom = 28.0
+tooltip_text = "把面团准备好送进烤箱！"
+mouse_filter = 1
+theme_override_fonts/normal_font = SubResource( 3 )
+theme_override_colors/font_shadow_color = Color( 0.239216, 0.239216, 0.239216, 1 )
+bbcode_enabled = true
+text = " 开始
+烘焙！"
+text = " 开始
+烘焙！"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Trash" type="TextureRect" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -268.928
+offset_top = -202.372
+offset_right = -118.928
+offset_bottom = -27.3723
+texture = ExtResource( 22 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sound" type="AudioStreamPlayer" parent="Trash"]
+stream = ExtResource( 24 )
+volume_db = -5.0
+
+[node name="RecipePage" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="RichTextLabel" parent="RecipePage"]
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -119.863
+offset_top = 29.3866
+offset_right = 150.137
+offset_bottom = 128.387
+theme_override_fonts/normal_font = SubResource( 2 )
+theme_override_colors/default_color = Color( 0.501961, 0.482353, 0.482353, 1 )
+bbcode_enabled = true
+text = "食谱"
+text = "食谱"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="RecipePage"]
+anchor_left = 0.833
+anchor_top = 0.005
+anchor_right = 0.833
+anchor_bottom = 0.005
+offset_left = -137.631
+offset_top = 9.82935
+offset_right = -50.6313
+offset_bottom = 86.8293
+texture_normal = ExtResource( 20 )
+expand = true
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+click_override = true
+
+[node name="sound" type="AudioStreamPlayer" parent="RecipePage"]
+stream = ExtResource( 25 )
+
+[node name="sound_down" type="AudioStreamPlayer" parent="RecipePage"]
+stream = ExtResource( 26 )
+
+[node name="ReceipeContents" type="RichTextLabel" parent="RecipePage"]
+anchor_left = 0.519
+anchor_top = 0.15
+anchor_right = 0.519
+anchor_bottom = 0.995
+offset_left = -310.0
+offset_top = -4.0
+offset_right = 310.0
+offset_bottom = 0.0
+size_flags_vertical = 3
+theme_override_fonts/normal_font = SubResource( 4 )
+theme_override_colors/default_color = Color( 0.501961, 0.482353, 0.482353, 1 )
+bbcode_enabled = true
+text = "1杯白糖
+
+2杯面粉"
+text = "1杯白糖
+
+2杯面粉"
+
+[node name="wait_to_load" type="Timer" parent="RecipePage"]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="DialogueBox" parent="." instance=ExtResource( 1 )]
+visible = false
+[connection signal="input_event" from="Ingredients/Chips" to="Ingredients/Chips" method="_on_input_event"]
+[connection signal="mouse_entered" from="Ingredients/Chips" to="Ingredients/Chips" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Ingredients/Chips" to="Ingredients/Chips" method="_on_mouse_exited"]
+[connection signal="input_event" from="Ingredients/Sugar" to="Ingredients/Sugar" method="_on_input_event"]
+[connection signal="mouse_entered" from="Ingredients/Sugar" to="Ingredients/Sugar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Ingredients/Sugar" to="Ingredients/Sugar" method="_on_mouse_exited"]
+[connection signal="input_event" from="Ingredients/Flour" to="Ingredients/Flour" method="_on_input_event"]
+[connection signal="mouse_entered" from="Ingredients/Flour" to="Ingredients/Flour" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Ingredients/Flour" to="Ingredients/Flour" method="_on_mouse_exited"]
+[connection signal="input_event" from="Ingredients/Bowl" to="Ingredients/Bowl" method="_on_input_event"]
+[connection signal="input_event" from="Ingredients/BrownSugar" to="Ingredients/BrownSugar" method="_on_input_event"]
+[connection signal="mouse_entered" from="Ingredients/BrownSugar" to="Ingredients/BrownSugar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Ingredients/BrownSugar" to="Ingredients/BrownSugar" method="_on_mouse_exited"]
+[connection signal="input_event" from="Ingredients/Egg" to="Ingredients/Egg" method="_on_input_event"]
+[connection signal="mouse_entered" from="Ingredients/Egg" to="Ingredients/Egg" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Ingredients/Egg" to="Ingredients/Egg" method="_on_mouse_exited"]
+[connection signal="input_event" from="Ingredients/Butter" to="Ingredients/Butter" method="_on_input_event"]
+[connection signal="mouse_entered" from="Ingredients/Butter" to="Ingredients/Butter" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Ingredients/Butter" to="Ingredients/Butter" method="_on_mouse_exited"]
+[connection signal="input_event" from="Ingredients/Vanilla" to="Ingredients/Vanilla" method="_on_input_event"]
+[connection signal="mouse_entered" from="Ingredients/Vanilla" to="Ingredients/Vanilla" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Ingredients/Vanilla" to="Ingredients/Vanilla" method="_on_mouse_exited"]
+[connection signal="input_event" from="Ingredients/RecipeBook" to="RecipePage" method="_on_book_clicked"]
+[connection signal="mouse_entered" from="Ingredients/RecipeBook" to="Ingredients/RecipeBook" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Ingredients/RecipeBook" to="Ingredients/RecipeBook" method="_on_mouse_exited"]
+[connection signal="input_event" from="Ingredients/Soda" to="Ingredients/Soda" method="_on_input_event"]
+[connection signal="mouse_entered" from="Ingredients/Soda" to="Ingredients/Soda" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Ingredients/Soda" to="Ingredients/Soda" method="_on_mouse_exited"]
+[connection signal="input_event" from="Ingredients/Cup" to="Ingredients/Cup" method="_on_input_event"]
+[connection signal="mouse_entered" from="Ingredients/Cup" to="Ingredients/Cup" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Ingredients/Cup" to="Ingredients/Cup" method="_on_mouse_exited"]
+[connection signal="gui_input" from="ReadyToBake" to="ReadyToBake" method="_on_gui_input"]
+[connection signal="mouse_entered" from="ReadyToBake" to="ReadyToBake" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ReadyToBake" to="ReadyToBake" method="_on_mouse_exited"]
+[connection signal="gui_input" from="Trash" to="Trash" method="_on_gui_input"]
+[connection signal="mouse_entered" from="Trash" to="Trash" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Trash" to="Trash" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="RecipePage/TextureButton" to="RecipePage/TextureButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="RecipePage/TextureButton" to="RecipePage/TextureButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="RecipePage/TextureButton" to="RecipePage" method="_on_close"]
+[connection signal="timeout" from="RecipePage/wait_to_load" to="RecipePage" method="_on_wait_to_load_timeout"]
