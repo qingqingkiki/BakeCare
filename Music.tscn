@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Sounds/Music/bossa-antigua-by-kevin-macleod-from-filmmusic-io.wav" type="AudioStream" id=1]
+[ext_resource path="res://Sounds/Music/bossa-antigua-by-kevin-macleod-from-filmmusic-io.mp3" type="AudioStream" id=1]
 
 [node name="Node2D" type="Node2D"]
 
